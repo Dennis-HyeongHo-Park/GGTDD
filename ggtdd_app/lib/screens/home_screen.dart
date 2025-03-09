@@ -12,11 +12,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _fadeController;
-  late Animation<double> _fadeAnimation;
-
+class _HomeScreenState extends State<HomeScreen> {
   final List<String> _texts = [
     'AI로 완벽한 GTD 경험',
     '쏟아지는 업무를\n스트레스 없이\n관리하세요.',
@@ -36,20 +32,10 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   void initState() {
     super.initState();
-    _fadeController = AnimationController(
-      duration: const Duration(seconds: 2),
-      vsync: this,
-    )..repeat(reverse: true);
-
-    _fadeAnimation = Tween<double>(
-      begin: 1.0,
-      end: 0.3,
-    ).animate(_fadeController);
   }
 
   @override
   void dispose() {
-    _fadeController.dispose();
     super.dispose();
   }
 
