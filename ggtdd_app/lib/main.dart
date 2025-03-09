@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ggtdd_app/screens/home_screen.dart';
+import 'package:ggtdd_app/screens/intro_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'GGTDD',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const HomeScreen(
+      home: const IntroScreen(
         logoImagePath: 'assets/images/ggtdd.png',
       ),
     );
