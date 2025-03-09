@@ -29,8 +29,8 @@ class _IntroScreenState extends State<IntroScreen> {
 
   final List<String> _images = [
     'assets/images/Ellipse_43.png',
-    'assets/images/Ellipse_44.png',
     'assets/images/Ellipse_45.png',
+    'assets/images/Ellipse_44.png',
     'assets/images/to-do-list.png',
     'assets/images/man.png',
     'assets/images/details_1.png',
@@ -55,7 +55,9 @@ class _IntroScreenState extends State<IntroScreen> {
 
   void _changeContents() {
     setState(() {
-      _currentIndex = (_currentIndex + 1) % _texts.length;
+      if (_currentIndex < _texts.length - 1) {
+        _currentIndex = _currentIndex + 1;
+      }
     });
   }
 
@@ -364,7 +366,7 @@ class _IntroScreenState extends State<IntroScreen> {
           Center(
             child: ElevatedButton(
               onPressed: () {
-                // TODO: 시작하기 버튼 동작 구현
+                Navigator.pushNamed(context, '/start_info');
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue,

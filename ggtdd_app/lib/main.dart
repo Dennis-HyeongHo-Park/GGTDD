@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ggtdd_app/screens/intro_screen.dart';
+import 'package:ggtdd_app/screens/start_info.dart';
+import 'package:ggtdd_app/screens/insert_info.dart';
+import 'package:ggtdd_app/screens/context_option.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,28 +11,12 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'GGTDD',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.blue,
           brightness: Brightness.light,
@@ -39,6 +26,29 @@ class MyApp extends StatelessWidget {
       home: const IntroScreen(
         logoImagePath: 'assets/images/ggtdd.png',
       ),
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case '/start_info':
+            return MaterialPageRoute(
+              builder: (context) => const StartInfoScreen(),
+            );
+          case '/insert_info':
+            return MaterialPageRoute(
+              builder: (context) => const InsertInfoScreen(),
+            );
+          case '/context_option':
+            return MaterialPageRoute(
+              builder: (context) => const ContextOptionScreen(),
+              settings: settings,
+            );
+          default:
+            return MaterialPageRoute(
+              builder: (context) => const IntroScreen(
+                logoImagePath: 'assets/images/ggtdd.png',
+              ),
+            );
+        }
+      },
     );
   }
 }
