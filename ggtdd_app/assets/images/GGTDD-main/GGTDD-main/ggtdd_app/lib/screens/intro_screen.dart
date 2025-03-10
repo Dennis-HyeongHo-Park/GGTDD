@@ -221,8 +221,7 @@ class _IntroScreenState extends State<IntroScreen> {
           ),
           TextSpan(
             text: "'오후 7시, 공원에서 30분간 가볍게 뛰기'\n\n",
-            style: const TextStyle(
-                fontSize: 24, color: Colors.red, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 24, color: Colors.red),
           ),
           TextSpan(
             text: "갑자기 할 수 있을 것 같지 않나요?",
@@ -247,8 +246,7 @@ class _IntroScreenState extends State<IntroScreen> {
           ),
           TextSpan(
             text: "1. 교재 10쪽 읽기,\n\n2. 노트 정리하기,\n\n3. 퀴즈 풀기,\n\n",
-            style: const TextStyle(
-                fontSize: 24, color: Colors.red, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 24, color: Colors.red),
           ),
           TextSpan(
             text: "로 바꿔요.",
@@ -291,8 +289,7 @@ class _IntroScreenState extends State<IntroScreen> {
           ),
           TextSpan(
             text: "명확한 단계",
-            style: const TextStyle(
-                fontSize: 24, color: Colors.red, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 24, color: Colors.red),
           ),
           TextSpan(
             text: "로 바뀌고,\n\n무엇부터 할지 알려줘요.",
@@ -327,7 +324,7 @@ class _IntroScreenState extends State<IntroScreen> {
           TextSpan(
             text: "바꿀 준비",
             style: const TextStyle(
-                fontSize: 24, color: Colors.red, fontWeight: FontWeight.bold),
+                fontSize: 24, fontWeight: FontWeight.bold, color: Colors.red),
           ),
           TextSpan(
             text: "가 되셨나요?",
