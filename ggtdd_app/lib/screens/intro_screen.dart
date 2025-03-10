@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 
 class IntroScreen extends StatefulWidget {
-  final String logoImagePath;
-
   const IntroScreen({
     super.key,
-    required this.logoImagePath,
   });
 
   @override
@@ -67,11 +64,12 @@ class _IntroScreenState extends State<IntroScreen> {
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 0, top: 10),
-          child: Image.asset(
-            'assets/images/ggtdd.png',
-            width: 115,
-            height: 55,
-            fit: BoxFit.contain,
+          child: Text(
+            'GGTDD',
+            style: TextStyle(
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         const SizedBox(height: 30),
@@ -103,10 +101,22 @@ class _IntroScreenState extends State<IntroScreen> {
         const SizedBox(height: 100),
         Center(
           child: Image.asset(
-            'assets/images/to-do-list.png',
+            _images[_currentIndex],
             width: 400,
             height: 400,
             fit: BoxFit.contain,
+            errorBuilder: (context, error, stackTrace) {
+              print('Image load error: $error');
+              print('Image path: ${_images[_currentIndex]}');
+              print('Stack trace: $stackTrace');
+              return Column(
+                children: [
+                  const Text('이미지를 불러올 수 없습니다'),
+                  Text('Error: $error'),
+                  Text('Path: ${_images[_currentIndex]}'),
+                ],
+              );
+            },
           ),
         ),
       ],
@@ -131,46 +141,47 @@ class _IntroScreenState extends State<IntroScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(top: 20),
+                            padding: const EdgeInsets.only(left: 0, top: 10),
                             child: Image.asset(
-                              widget.logoImagePath,
-                              width: 300,
-                              height: 260,
+                              'assets/images/ggtdd.png',
+                              width: 400,
+                              height: 200,
                               fit: BoxFit.contain,
-                              errorBuilder: (context, error, stackTrace) {
-                                return const Text('이미지를 불러올 수 없습니다');
-                              },
-                            ),
-                          ),
-                          const SizedBox(height: 1),
-                          SizedBox(
-                            width: double.infinity,
-                            height: 150,
-                            child: Center(
-                              child: Text(
-                                _texts[_currentIndex],
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: _currentIndex < 3 ? 40 : 24,
-                                  fontWeight: _currentIndex < 3
-                                      ? FontWeight.w900
-                                      : FontWeight.bold,
-                                  height: 1.2,
-                                ),
-                              ),
                             ),
                           ),
                           const SizedBox(height: 40),
-                          Image.asset(
-                            _images[_currentIndex],
-                            width: 400,
-                            height: 400,
-                            fit: BoxFit.contain,
-                            errorBuilder: (context, error, stackTrace) {
-                              return const Text('이미지를 불러올 수 없습니다');
-                            },
+                          Text(
+                            _texts[_currentIndex],
+                            style: TextStyle(
+                              fontSize: _currentIndex < 3 ? 40 : 24,
+                              fontWeight: _currentIndex < 3
+                                  ? FontWeight.w900
+                                  : FontWeight.bold,
+                              height: 1.2,
+                            ),
                           ),
-                          const Spacer(),
+                          const SizedBox(height: 40),
+                          Expanded(
+                            child: Center(
+                              child: Image.asset(
+                                _images[_currentIndex],
+                                fit: BoxFit.contain,
+                                errorBuilder: (context, error, stackTrace) {
+                                  print('Image load error: $error');
+                                  print(
+                                      'Image path: ${_images[_currentIndex]}');
+                                  print('Stack trace: $stackTrace');
+                                  return Column(
+                                    children: [
+                                      const Text('이미지를 불러올 수 없습니다'),
+                                      Text('Error: $error'),
+                                      Text('Path: ${_images[_currentIndex]}'),
+                                    ],
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),

@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 
-class ContextOptionScreen extends StatelessWidget {
+class ContextOptionScreen extends StatefulWidget {
   const ContextOptionScreen({super.key});
 
   @override
+  State<ContextOptionScreen> createState() => _ContextOptionScreenState();
+}
+
+class _ContextOptionScreenState extends State<ContextOptionScreen> {
+  @override
   Widget build(BuildContext context) {
     // 이전 화면에서 전달받은 사용자 정보
-    final Map<String, dynamic>? args =
-        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
-    final String name = args?['name'] as String? ?? '사용자';
-    final String occupation = args?['occupation'] as String? ?? '회사원';
+    final Map<String, dynamic> args =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>? ??
+            {'name': '사용자', 'occupation': '회사원'};
+    final String name = args['name'] as String;
+    final String occupation = args['occupation'] as String;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -59,16 +65,18 @@ class ContextOptionScreen extends StatelessWidget {
               const SizedBox(height: 40),
 
               // 설명 텍스트
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Text(
-                  '안녕하세요, $name님!\nGGTDD가 $occupation 직업에 맞춰 하루를 정리할\n9가지 기본 맥락을 준비했어요.\n이 맥락들은 시작점일 뿐,\n나중에 [설정 페이지]에서 당신의 삶에 맞게 바꿀 수 있어요!',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    color: Colors.black,
-                    height: 1.5,
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    '안녕하세요, $name님!\nGGTDD가 $occupation 직업에 맞춰 하루를 정리할\n9가지 기본 맥락을 준비했어요.\n이 맥락들은 시작점일 뿐,\n나중에 [설정 페이지]에서 당신의 삶에 맞게 바꿀 수 있어요!',
+                    style: const TextStyle(
+                      fontSize: 16,
+                      color: Colors.black,
+                      height: 1.5,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
               ),
               const SizedBox(height: 30),

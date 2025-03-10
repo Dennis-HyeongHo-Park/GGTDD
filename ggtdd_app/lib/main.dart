@@ -23,9 +23,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const IntroScreen(
-        logoImagePath: 'assets/images/ggtdd.png',
-      ),
+      home: const IntroScreen(),
       onGenerateRoute: (settings) {
         switch (settings.name) {
           case '/start_info':
@@ -43,9 +41,7 @@ class MyApp extends StatelessWidget {
             );
           default:
             return MaterialPageRoute(
-              builder: (context) => const IntroScreen(
-                logoImagePath: 'assets/images/ggtdd.png',
-              ),
+              builder: (context) => const IntroScreen(),
             );
         }
       },
