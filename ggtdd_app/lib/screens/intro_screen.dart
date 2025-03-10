@@ -25,7 +25,7 @@ class _IntroScreenState extends State<IntroScreen> {
   ];
 
   final List<String> _images = [
-    'assets/images/Ellipse_43.png',
+    'assets/images/Ellipse_43.jpg',
     'assets/images/Ellipse_45.png',
     'assets/images/Ellipse_44.png',
     'assets/images/to-do-list.png',
